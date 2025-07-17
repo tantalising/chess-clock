@@ -1,4 +1,0 @@
-module ChessClock
-typeinfo appChessClock.qmltypes
-prefer :/
-
