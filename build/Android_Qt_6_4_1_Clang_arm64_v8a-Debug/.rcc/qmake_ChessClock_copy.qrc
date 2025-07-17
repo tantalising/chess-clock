@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/ChessClock">
+    <file alias="qmldir">D:/Felgo/Projects/ChessClock/build/Android_Qt_6_4_1_Clang_arm64_v8a-Debug/ChessClock/qmldir</file>
+  </qresource>
+</RCC>
+
