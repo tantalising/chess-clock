@@ -1,0 +1,22 @@
+# Build directories and files
+build/
+*.user
+*.pro.user
+*.qmlc
+*.qmlproject.user
+*.json.user
+qml_debug_client.ini
+
+# IDE-specific files (Qt Creator, VS Code, etc.)
+.qtc_clangd/
+.vscode/
+.idea/
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# Other common temporary files
+*.bak
+*~
+*.log
