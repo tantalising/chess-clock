@@ -31,6 +31,9 @@ Rectangle {
     readonly property int smallMargin: dp(10)
     readonly property int largeMargin: dp(20)
 
+    required property ClockTimer clockTimer
+    required property int moves
+
     color: pallete.backgroundColor
     border.color: color
     radius: dp(30) // A nice radius
@@ -40,7 +43,7 @@ Rectangle {
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
             AppText {
-                text: "05:23"
+                text: clockTimer.minutes + " : " + clockTimer.seconds
                 font.pixelSize: clockFace.mainTextSize
                 font.bold: true
                 color: pallete.mainTextColor
@@ -49,7 +52,7 @@ Rectangle {
             // Smaller milliseconds below
              AppText {
                     Layout.alignment: Qt.AlignHCenter
-                    text: "231"
+                    text: clockTimer.milliseconds
                     font.pixelSize: clockFace.secondaryTextSize
                     color: pallete.secondaryTextColor
                 }
@@ -73,6 +76,6 @@ Rectangle {
             bottom: parent.bottom
             rightMargin: clockFace.largeMargin
         }
-        text: "move: 12"
+        text: "move: " + clockFace.moves
     }
 }
