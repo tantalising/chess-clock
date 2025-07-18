@@ -28,6 +28,8 @@ Rectangle {
 
     readonly property int mainTextSize: sp(57) // material large headline
     readonly property int secondaryTextSize: sp(32) // material large body
+    readonly property int smallMargin: dp(10)
+    readonly property int largeMargin: dp(20)
 
     color: pallete.backgroundColor
     border.color: color
@@ -52,5 +54,25 @@ Rectangle {
                     color: pallete.secondaryTextColor
                 }
         }
+    }
+    AppText {
+        id: playerName
+        text: side === ClockFace.WHITE ? "WHITE" : "BLACK"
+        font.pixelSize: clockFace.secondaryTextSize
+        color: pallete.secondaryTextColor
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: clockFace.smallMargin
+    }
+    AppText {
+        id: moveNumber
+        font.pixelSize: clockFace.secondaryTextSize
+        color: pallete.secondaryTextColor
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            rightMargin: clockFace.largeMargin
+        }
+        text: "move: 12"
     }
 }

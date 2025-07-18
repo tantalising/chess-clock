@@ -15,6 +15,7 @@ App {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: parent.clockWidth
                 Layout.preferredHeight: parent.clockHeight
+                rotation: 180 // Rotate the black clock so that it faces the black player
             }
             ClockFace {
                 side: ClockFace.WHITE
