@@ -15,7 +15,8 @@ App {
                 timeInMilliseconds: mainPage.totalTime
                 onTimeUp: {
                     whiteClockTimer.resetOnTimeUp();
-                    white.locked = true;
+                    white.moveNumber = 0;
+                    white.locked = false;
                     black.locked = true;
                 }
             }
@@ -25,7 +26,8 @@ App {
                 timeInMilliseconds: mainPage.totalTime
                 onTimeUp: {
                     blackClockTimer.resetOnTimeUp();
-                    white.locked = true;
+                    white.moveNumber = 0;
+                    white.locked = false;
                     black.locked = true;
                 }
             }
@@ -60,19 +62,36 @@ App {
                     desaturation: black.clockTimer.running ? 0.0 : 1.0
                 }
             }
-
-            IconButton {
-                id: resetButton
+            RowLayout {
                 Layout.alignment: Qt.AlignHCenter
-                iconType: IconType.refresh
-                enabled: (white.locked && black.locked) || (white.clockTimer.running || black.clockTimer.running)
-                onClicked: {
-                    white.locked = false;
-                    black.locked = true;
-                    white.clockTimer.resetOnTimeUp();
-                    black.clockTimer.resetOnTimeUp();
-                }
+                IconButton {
+                    id: changeTimeButton
+                    iconType: IconType.clocko
+                    enabled: !resetButton.enabled
+                     onClicked: InputDialog.inputTextSingleLine(app,
+                                              "Time for clock",
+                                              "Time in minute",
+                                              function(ok, text) {
+                                                if(ok) {
+                                                  if (Number.isInteger(Number(text)) && Number(text) > 0) {
+                                                    mainPage.totalTime = parseInt(text) * 60 * 1000;
+                                                  }
+                                                }
+                                              })
+                } 
+                IconButton {
+                    id: resetButton
+                    iconType: IconType.refresh
+                    enabled: (white.locked && black.locked) || (white.clockTimer.running || black.clockTimer.running)
+                    onClicked: {
+                        white.locked = false;
+                        black.locked = true;
+                        white.clockTimer.resetOnTimeUp();
+                        black.clockTimer.resetOnTimeUp();
+                    }
+                } 
             }
+            
 
             ClockFace {
                 id: white
