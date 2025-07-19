@@ -4,6 +4,7 @@ Item {
     id: timer
 
     required property int timeInMilliseconds
+    signal timeUp();
 
     readonly property int minutes: _toMinutes(timeInMilliseconds - _millisecondsPassed)
     readonly property int seconds: _toSeconds(timeInMilliseconds - _millisecondsPassed) % 60
@@ -36,6 +37,12 @@ Item {
     }
 
     function reset() {
+        _isRunning = false;
+        _millisecondsPassed = 0;
+        timeUp();
+    }
+
+    function resetOnTimeUp() {
         _isRunning = false;
         _millisecondsPassed = 0;
     }
