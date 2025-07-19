@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 
 App {
+    id: app
     NavigationStack {
         AppPage {
             id: mainPage
